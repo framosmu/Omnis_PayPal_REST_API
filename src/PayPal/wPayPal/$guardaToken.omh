@@ -1,0 +1,2 @@
+Calculate iToken as pResponseRow.access_token
+Do $cinst.$objs.iToken.$redraw()

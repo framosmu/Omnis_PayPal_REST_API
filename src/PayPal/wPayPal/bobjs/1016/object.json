@@ -1,0 +1,28 @@
+{
+	"ident": 1016,
+	"order": 16385,
+	"objtype": "kBackpicture",
+	"properties": {
+		"cachepicture": false,
+		"componentinfo": {
+
+		},
+		"designactive": true,
+		"edgefloat": "kEFnone",
+		"fieldstyle": "",
+		"height": 108,
+		"left": 11,
+		"objlink": 0,
+		"picture": {
+			"type": 256,
+			"calc": {
+				"$png": "picture.png"
+			}
+		},
+		"tile": false,
+		"top": 9,
+		"userinfo": "",
+		"visible": true,
+		"width": 140
+	}
+}

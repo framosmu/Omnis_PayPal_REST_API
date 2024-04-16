@@ -1,0 +1,2 @@
+Do iPedidos.$add(pResponseRow.id,"EN CESTA")
+Do $cinst.$objs.iPedidos.$redraw()

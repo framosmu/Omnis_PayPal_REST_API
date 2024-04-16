@@ -1,0 +1,2 @@
+Calculate iPedidos.iEstado as 'ANULADO'
+Do $cinst.$objs.iPedidos.$redraw()

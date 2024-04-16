@@ -1,0 +1,12 @@
+Do iHeadersList.$define(iHeaderName,iHeaderValue)
+Do iHeadersList.$add("Content-Type","application/json")
+Do iHeadersList.$add("PayPal-Request-Id",pID)
+Do iHeadersList.$add("Authorization",con("Bearer ",pToken))
+
+Calculate iURI as con("https://api-m.sandbox.paypal.com/v2/checkout/orders/",pID,"/capture")
+Do $cinst.$init(iURI,kOW3httpMethodPost,iHeadersList,'') Returns lOk
+If not(lOk)
+	OK message {Error [$cinst.$errorcode]: [$cinst.$errortext]}
+	Quit method kFalse
+End If
+Do $cinst.$start() Returns lOk

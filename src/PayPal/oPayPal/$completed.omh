@@ -1,0 +1,15 @@
+Calculate iResponse as pRow
+Calculate iResponseHeaders as pRow.responseHeaders
+Do OJSON.$formatjson(pRow.responseContent) Returns iResponseChar
+Do OJSON.$jsontolistorrow(pRow.responseContent) Returns iResponseRow
+If pos('access_token',iResponseChar)<>0
+	Do iCallingInst.$guardaToken(iResponseRow)
+Else If pos('"status": "CREATED"',iResponseChar)<>0
+	Do iCallingInst.$autorizaCompra(iResponseRow)
+Else If pos('"status": "PAYER_ACTION_REQUIRED"',iResponseChar)<>0
+	Do iCallingInst.$confirma(iResponseRow)
+Else If pos('"status": "COMPLETED"',iResponseChar)<>0
+	Do iCallingInst.$hecho(iResponseRow)
+Else
+	Do iCallingInst.$completed(iResponseRow)
+End If

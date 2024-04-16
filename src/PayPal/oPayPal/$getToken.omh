@@ -1,0 +1,11 @@
+Do iHeadersList.$define(iHeaderName,iHeaderValue)
+Do iHeadersList.$add("Content-Type","application/x-www-form-urlencoded")
+
+Calculate iURI as "https://api-m.sandbox.paypal.com/v1/oauth2/token"
+Calculate iContent as 'grant_type=client_credentials'
+Do $cinst.$init(iURI,kOW3httpMethodPost,iHeadersList,iContent,kOW3httpAuthTypeBasic,iUsuario,iPaso) Returns lOk
+If not(lOk)
+	OK message {Error [$cinst.$errorcode]: [$cinst.$errortext]}
+	Quit method kFalse
+End If
+Do $cinst.$start() Returns lOk

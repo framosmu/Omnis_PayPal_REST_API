@@ -1,0 +1,48 @@
+Do iHeadersList.$define(iHeaderName,iHeaderValue)
+Do iHeadersList.$add("Content-Type","application/json")
+Do iHeadersList.$add("PayPal-Request-Id",pID)
+Do iHeadersList.$add("Authorization",con("Bearer ",pToken))
+
+Begin text block
+Line:{
+Line:    "intent": "CAPTURE",
+Line:    "purchase_units": [
+Line:        {
+Line:            "items": [
+Line:                {
+Line:                    "name": "Camiseta",
+Line:                    "description": "Talla XL",
+Line:                    "quantity": "1",
+Line:                    "unit_amount": {
+Line:                        "currency_code": "EUR",
+Line:                        "value": "100.00"
+Line:                    }
+Line:                }
+Line:            ],
+Line:            "amount": {
+Line:                "currency_code": "EUR",
+Line:                "value": "100.00",
+Line:                "breakdown": {
+Line:                    "item_total": {
+Line:                        "currency_code": "EUR",
+Line:                        "value": "100.00"
+Line:                    }
+Line:                }
+Line:            }
+Line:        }
+Line:    ],
+Line:    "application_context": {
+Line:        "return_url": "https://example.com/return",
+Line:        "cancel_url": "https://example.com/cancel"
+Line:    }
+Line:}
+End text block
+Get text block iContent
+
+Calculate iURI as "https://api-m.sandbox.paypal.com/v2/checkout/orders"
+Do $cinst.$init(iURI,kOW3httpMethodPost,iHeadersList,iContent) Returns lOk
+If not(lOk)
+	OK message {Error [$cinst.$errorcode]: [$cinst.$errortext]}
+	Quit method kFalse
+End If
+Do $cinst.$start() Returns lOk

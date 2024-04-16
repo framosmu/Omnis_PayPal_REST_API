@@ -1,0 +1,36 @@
+{
+	"ident": 1019,
+	"order": 16387,
+	"objtype": "kText",
+	"properties": {
+		"align": "kCenterJst",
+		"backcolor": "RGBA(kColorBackFill,255)",
+		"backpattern": 15,
+		"bordercolor": "RGBA(0,0,0,255)",
+		"componentinfo": {
+
+		},
+		"designactive": true,
+		"edgefloat": "kEFnone",
+		"effect": "kBorderNone",
+		"fieldstyle": "",
+		"font": 4,
+		"fontsize": 24,
+		"fontstyle": "kPlain",
+		"forecolor": "RGBA(kColorForeFill,255)",
+		"height": 100,
+		"left": 152,
+		"linestyle": 1,
+		"objlink": 0,
+		"text": {
+			"type": 14,
+			"calc": "\u001B\u00018000011A#\u001B\u000200000001#Integración\r\u001B\u000180000122#Paypal REST API con Omnis"
+		},
+		"textcolor": "kColorWindowText",
+		"top": 22,
+		"userinfo": "",
+		"vertcentertext": true,
+		"visible": true,
+		"width": 368
+	}
+}

@@ -1,0 +1,37 @@
+Do iHeadersList.$define(iHeaderName,iHeaderValue)
+Do iHeadersList.$add("Content-Type","application/json")
+Do iHeadersList.$add("PayPal-Request-Id",pID)
+Do iHeadersList.$add("Authorization",con("Bearer ",pToken))
+
+Begin text block
+Line:{
+Line:  "payment_source": {
+Line:    "paypal": {
+Line:      "name": {
+Line:        "given_name": "John",
+Line:        "surname": "Doe"
+Line:      },
+Line:      "email_address": "sb-unprt27583735@personal.example.com",
+Line:      "experience_context": {
+Line:        "payment_method_preference": "IMMEDIATE_PAYMENT_REQUIRED",
+Line:        "brand_name": "EXAMPLE INC",
+Line:        "locale": "en-US",
+Line:        "landing_page": "LOGIN",
+Line:        "shipping_preference": "SET_PROVIDED_ADDRESS",
+Line:        "user_action": "PAY_NOW",
+Line:        "return_url": "https://example.com/returnUrl",
+Line:        "cancel_url": "https://example.com/cancelUrl"
+Line:      }
+Line:    }
+Line:  }
+Line:}
+End text block
+Get text block iContent
+
+Calculate iURI as con("https://api-m.sandbox.paypal.com/v2/checkout/orders/",pID,"/authorize")
+Do $cinst.$init(iURI,kOW3httpMethodPost,iHeadersList,iContent) Returns lOk
+If not(lOk)
+	OK message {Error [$cinst.$errorcode]: [$cinst.$errortext]}
+	Quit method kFalse
+End If
+Do $cinst.$start() Returns lOk

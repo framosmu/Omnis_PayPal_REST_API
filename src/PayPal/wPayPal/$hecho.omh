@@ -1,0 +1,3 @@
+Calculate iPedidos.iEstado as 'PAGADO'
+Do $cinst.$objs.OBrowser.$urlorcontrolname.$assign("http://www.omnis.net/")
+Do $cinst.$redraw()

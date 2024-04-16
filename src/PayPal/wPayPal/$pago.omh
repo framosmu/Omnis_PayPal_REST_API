@@ -1,0 +1,2 @@
+Do oAPI.$setCallingInst($cinst)
+Do oAPI.$pago(iToken,iIDCompra)

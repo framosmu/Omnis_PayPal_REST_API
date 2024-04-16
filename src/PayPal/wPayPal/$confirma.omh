@@ -1,0 +1,5 @@
+Calculate iPedidos.iEstado as 'VALIDADO'
+Calculate lRow as pResponseRow.links
+Calculate lRow as lRow.___2
+Do $cinst.$objs.OBrowser.$urlorcontrolname.$assign(lRow.href)
+Do $cinst.$redraw()
